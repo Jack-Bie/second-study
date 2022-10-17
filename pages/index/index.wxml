@@ -7,18 +7,18 @@
     <view class="list-group">
         <view class="list-group-item" wx:for="{{ classes }}" wx:key="index">
             <view class="header">
-                <text class="title" style="color: {{(item.price / 100<75)?color1:color2}}">{{ item.name }}</text>
+                <text class="title" style="color: {{(item.price / 100 < 75&&isHighliting)?"#ffc107":" "}}">{{ item.name }}</text>
                 <text class="price">{{ item.price / 100 }} 元</text>
             </view>
             <text class="desc">{{ item.description }}</text>
         </view>
     </view>
-    <view class="pagination" wx:if="{{show}}">总页数 {{ totalPage }}  当前页数 {{ curPage }}</view>
-    <picker class="picker" wx:if="{{show}}" value="{{ pageSize }}" range="{{ pageSizeArray }}" bindchange="onPageSizeChange">
+    <view class="pagination" wx:if="{{totalPage != 1}}">总页数 {{ totalPage }}  当前页数 {{ curPage }}</view>
+    <picker class="picker" wx:if="{{totalPage != 1}}" value="{{ pageSize }}" range="{{ pageSizeArray }}" bindchange="onPageSizeChange">
         每页 {{ pageSize }} 条数据
     </picker>
-    <view class="buttons" wx:if="{{show}}">
-        <button disabled="{{disabledPreBut}}" bindtap="onPrevTap">上一页</button>
-        <button disabled="{{disabledNexBut}}" bindtap="onNextTap">下一页</button>
+    <view class="buttons" wx:if="{{totalPage != 1}}">
+        <button disabled="{{curPage === 1}}" bindtap="onPrevTap">上一页</button>
+        <button disabled="{{curPage === totalPage}}" bindtap="onNextTap">下一页</button>
     </view>
 </view>
