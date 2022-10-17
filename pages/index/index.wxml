@@ -7,7 +7,7 @@
     <view class="list-group">
         <view class="list-group-item" wx:for="{{ classes }}" wx:key="index">
             <view class="header">
-                <text class="title" style="color: {{(item.price / 100 < 75&&isHighliting)?"#ffc107":" "}}">{{ item.name }}</text>
+                <text class="title" style="color:{{isHighlight&&(item.price / 100 < 75)?'#ffc107':'black'}};">{{ item.name }}</text>
                 <text class="price">{{ item.price / 100 }} 元</text>
             </view>
             <text class="desc">{{ item.description }}</text>

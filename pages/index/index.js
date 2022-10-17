@@ -25,7 +25,6 @@ Page({
     this.setData({
       curPage: this.data.curPage - 1,
     });
-    
     this.updateClasses();
   },
 
@@ -34,7 +33,6 @@ Page({
     this.setData({
       curPage: this.data.curPage + 1,
     });
-    
     this.updateClasses();
   },
 
@@ -42,13 +40,13 @@ Page({
     console.log(e.detail.value);
     // write your code here
     this.setData({
+        curPage: 1,
         pageSize: this.data.pageSizeArray[e.detail.value],
     })
     totalPage = Math.ceil(classes.length / this.data.pageSize);
     this.setData({
         totalPage: totalPage,
     })
-    
     this.updateClasses();
   },
 
@@ -56,7 +54,7 @@ Page({
     console.log(e.detail.value);
     // write your code here
     this.setData({
-      isHighlight: true,
+        isHighlight: e.detail.value,
     })
   },
 });
